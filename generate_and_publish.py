@@ -1,3 +1,16 @@
+"""
+This is a simple module to support templated webpages.
+
+In a html file you can add somewhere: <!-- INCLUDE NAME -->
+Where NAME is the name of the html file you want to include. Included files
+are stored in `src/includes` as html. In this example if there was a "name.html"
+file in src/includes, its contents would get copied after the include statement.
+
+After the webpages were generated, the repo would be pushed to git
+and then changes reverted.
+
+"""
+
 import os
 from typing import Dict, Set
 
@@ -28,7 +41,7 @@ def get_includes() -> Dict[str, str]:
     return includes
 
 
-def insert_to_html(html, includes):
+def insert_to_html(html: str, includes: Dict[str, str]):
     """ Inserts includes to a html file"""
     with open(html, 'r') as fp:
         lines = fp.readlines()
@@ -65,7 +78,7 @@ def insert_includes():
         insert_to_html(html, includes)
 
 
-def clean_html(html):
+def clean_html(html: str):
     """ Removes includes from a html file"""
     with open(html, 'r') as fp:
         lines = fp.readlines()
@@ -95,7 +108,7 @@ def remove_includes():
 
 def main():
     """ Inserts includes, publishes to the github, and removes includes"""
-    remove_includes() # Just to make sure they aren't there
+    remove_includes()  # Just to make sure they aren't there
     insert_includes()
     os.system("git add .")
     os.system("git commit -m 'update'")
