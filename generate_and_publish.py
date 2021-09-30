@@ -1,10 +1,10 @@
 import os
-from typing import Dict
+from typing import Dict, Set
 
 INCLUDE_FOLDER = "include"
 
 
-def get_html_files() -> set:
+def get_html_files() -> Set:
     """ Returns all valid html files """
     htmls = set()
     for root, _, files in os.walk(os.path.dirname(__file__)):
@@ -33,7 +33,7 @@ def insert_to_html(html, includes):
     with open(html, 'r') as fp:
         lines = fp.readlines()
 
-    # Find where we will need to insert new stuff
+    # Find where we will need to insert includes
     where_to_place = dict()
     for i, line in enumerate(lines):
         if "<!-- INCLUDE " in line:
@@ -66,16 +66,16 @@ def insert_includes():
 
 
 def clean_html(html):
-    """ Cleans includes from a html file"""
+    """ Removes includes from a html file"""
     with open(html, 'r') as fp:
         lines = fp.readlines()
 
     where_remove = []
     for i, line in enumerate(lines):
         if "<!-- INCLUDE " in line:
-            where_remove.append([i + 1])
+            where_remove.append([i + 1, 0])
         if "<!-- INCLUDE_END -->" in line:
-            where_remove[-1].append(i + 1)
+            where_remove[-1][1] = i + 1
 
     # Remove those intervals. Going in reversed order to preserve indexes
     for start, end in where_remove[::-1]:
@@ -94,12 +94,13 @@ def remove_includes():
 
 
 def main():
-    # insert_includes()
-    ## Publish to github here
-    os.system("git add .") 
-    os.system("git commit -m 'update'") 
+    """ Inserts includes, publishes to the github, and removes includes"""
+    remove_includes() # Just to make sure they aren't there
+    insert_includes()
+    os.system("git add .")
+    os.system("git commit -m 'update'")
     os.system("git push")
-    # remove_includes()
+    remove_includes()
 
 
 if __name__ == "__main__":
