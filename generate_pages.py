@@ -6,8 +6,7 @@ Where NAME is the name of the html file you want to include. Included files
 are stored in `src/includes` as html. In this example if there was a "name.html"
 file in src/includes, its contents would get copied after the include statement.
 
-After the webpages were generated, the repo would be pushed to git
-and then changes reverted.
+After the webpages were generated, changes would be added to git and then reverted.
 
 """
 
@@ -15,6 +14,7 @@ import os
 from typing import Dict, Set
 
 INCLUDE_FOLDER = "include"
+changed_pages = set()
 
 
 def get_html_files() -> Set:
@@ -61,6 +61,7 @@ def insert_to_html(html: str, includes: Dict[str, str]):
             print(f"Warning! {what} not in includes!")
             continue
 
+        changed_pages.add(html)
         # Insert the include and end tag. Add correct offset for indentation
         lines.insert(i, f"{' '*offset}{includes[what]}")
         lines.insert(i + 1, f"\n{' '*offset}<!-- INCLUDE_END -->\n")
@@ -92,6 +93,7 @@ def clean_html(html: str):
 
     # Remove those intervals. Going in reversed order to preserve indexes
     for start, end in where_remove[::-1]:
+        changed_pages.add(html)
         del lines[start:end]
 
     # Save
@@ -107,12 +109,11 @@ def remove_includes():
 
 
 def main():
-    """ Inserts includes, publishes to the github, and removes includes"""
-    remove_includes()  # Just to make sure they aren't there
+    """ Inserts includes, adds changes to git, and removes includes"""
+    remove_includes()  # Just to make sure includes aren't there
     insert_includes()
-    os.system("git add .")
-    os.system("git commit -m 'update'")
-    os.system("git push")
+    for html in changed_pages:
+        os.system(f"git add {os.path.relpath(html)}")
     remove_includes()
 
 
