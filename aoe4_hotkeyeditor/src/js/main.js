@@ -17,15 +17,11 @@ function init_function() {
 
 // Shows or hides notes when a button is clicked
 function show_hide_notes() {
-    if ($("#notes").css("display") == "none") {
+    if ($("#notes").css("display") == "none")
         $("#notes").css("display", "block");
-        $("#notebutton span").text("︽ ︽")
-        $("#notebutton span").css("top", "13px")
-    } else {
+    else
         $("#notes").css("display", "none");
-        $("#notebutton span").text("︾ ︾");
-        $("#notebutton span").css("top", "15px")
-    }
+
 };
 
 // Processes parsed hotkey data
@@ -41,7 +37,7 @@ function process_hotkey_data(data) {
     find_commands(data, "", found_commands);
     sort_and_add_commands(found_commands);
     $(".btn").click(hotkey_button_clicked);
-    $("#visualization").append(`<div class="classic_keys_div" title="It currently doesn't do anything "><label for="classickeys">Classic keys</label> <input type="checkbox" id="classickeys" name="classickeys"></div>`);
+    $("#visualization").append(`<div class="classic_keys_div" title="It currently doesn't do anything"><label for="classickeys">Classic keys</label> <input type="checkbox" id="classickeys" name="classickeys"></div>`);
 };
 
 // Finds commands inside a parsed hotkey data

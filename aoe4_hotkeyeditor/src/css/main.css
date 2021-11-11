@@ -167,11 +167,11 @@ input[type="text"] {
 
 #notebutton span {
     position: absolute;
-    left: 21px;
-    top: 15px;
+    left: 10px;
+    top: 18px;
     user-select: none;
     color: var(--light_color);
-    font-size: 30px;
+    font-size: 26px;
     opacity: .9;
     font-family: 'Times New Roman', Times, serif;
 }
