@@ -193,6 +193,7 @@ input[type="text"] {
     right: 14px;
     bottom: .74em;
     text-decoration: none;
+    color: white;
 }
 
 #bloglink span {
