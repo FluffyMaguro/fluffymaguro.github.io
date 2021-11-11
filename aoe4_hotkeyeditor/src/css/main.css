@@ -8,21 +8,10 @@ body {
     color: white;
     margin: 10px;
     font-family: Helvetica, sans-serif;
-}
-
-body::before {
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
     background-image: url("../../src/img/bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-size: 100%;
-    opacity: 0.6;
-    z-index: -1;
 }
 
 /* POPUP */
@@ -183,7 +172,7 @@ input[type="text"] {
     user-select: none;
     color: var(--light_color);
     font-size: 34px;
-    opacity: .7;
+    opacity: .9;
 }
 
 #notes {
