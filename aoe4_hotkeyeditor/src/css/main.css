@@ -269,6 +269,12 @@ input[type="text"] {
     color: rgb(235, 235, 235);
 }
 
+.classic_keys_div {
+    text-align: right;
+    margin: 40px 0 0 0;
+    color: rgb(138, 138, 138);
+}
+
 #endlinks {
     text-align: center;
     padding: 20px;

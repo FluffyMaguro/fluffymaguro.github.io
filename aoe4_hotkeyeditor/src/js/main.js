@@ -41,6 +41,7 @@ function process_hotkey_data(data) {
     find_commands(data, "", found_commands);
     sort_and_add_commands(found_commands);
     $(".btn").click(hotkey_button_clicked);
+    $("#visualization").append(`<div class="classic_keys_div" title="It currently doesn't do anything "><label for="classickeys">Classic keys</label> <input type="checkbox" id="classickeys" name="classickeys"></div>`);
 };
 
 // Finds commands inside a parsed hotkey data

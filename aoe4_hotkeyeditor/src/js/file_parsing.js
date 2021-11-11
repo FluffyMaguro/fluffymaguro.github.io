@@ -108,6 +108,7 @@ function process_hotkey_file(e) {
 function parse_and_save_data() {
     clear_error_msg();
     global_hotkey_data['profile']['name'] = $("#profile_name").val();
+    global_hotkey_data['profile']['classicKeys'] = $("#classickeys").is(":checked");
     let content = encode_recursively(global_hotkey_data, 0).slice(1, -1);
     save_data(content);
 };
