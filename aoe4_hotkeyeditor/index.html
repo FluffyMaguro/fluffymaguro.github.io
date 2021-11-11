@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Age of Empires IV: Hotkey editor</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" type="image/x-icon" href="/src/img/favicon.ico">
+    <link rel='stylesheet' type='text/css' media='screen' href='src/css/main.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src='src/js/default_values.js'></script>
+    <script src='src/js/capture.js'></script>
+    <script src='src/js/file_parsing.js'></script>
+    <script src='src/js/main.js'></script>
+</head>
+
+<body>
+    <div id="popupdiv">
+        <div class="popup initial"><span></span>
+            <p></p>
+            <div class="buttons">
+                <div id="delbutton">remove hotkey</div>
+            </div>
+        </div>
+        <div class="popup confirmation"><span></span>
+            <p></p>
+            <div class="buttons">
+                <div class="cbtn no">X</div>
+                <div class="cbtn yes">✓</div>
+            </div>
+            <div id="confirm_notes"></div>
+        </div>
+    </div>
+
+    <div id="headerdiv">
+        <div id="title">Age of Empires IV: Hotkey Editor</div>
+        <p>Load your hotkey file or use default values.<br>Hotkey profiles are stored in: <span
+                class="path">Documents\MyGames\Age of Empires IV\keyBindingProfiles</span></p>
+        <span class="labels">Profile name:</span><input type="text" id="profile_name" placeholder="Profile name"
+            name="profile_name">
+        <label class="bigbtn" for="files" id="loadbtn">Load profile</label>
+        <input type=file id="files" accept=".rkp" onchange="file_selected()" />
+        <div class="bigbtn" id="savebtn">Save profile</div>
+        <div></div> <a id="bloglink" href="https://www.maguro.one/"><span>www.maguro.one</span><img
+                src="/src/img/favicon.ico"></a>
+        <p id="errordiv"></p>
+        <div id="notebutton">Additional notes:<span>︾ ︾</span></div>
+
+        <div id="notes">
+            <ul>
+                <li>The game has to be restarted before it will see new hotkey profiles</li>
+                <li>Certain commands doesn't seem to do anything in-game (shown as gray)</li>
+                <li>Mouse buttons might work only in some cases like camera control</li>
+                <li>Modifiers (Ctrl, Alt, Shift) without normal keys might work only in special cases like camera
+                    control</li>
+                <li>Changing hotkey profiles during a game might not apply correctly</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="visualization">
+    </div>
+    <div id="endlinks">
+        <a href="https://www.maguro.one/" target="blank"><img src="src/img/maguro100.png" alt="Maguro"></a>
+        <a href="https://twitter.com/FluffyMaguro" target="blank"><img src="src/img/twitter100.png" alt="Twitter"></a>
+        <a href="https://discord.gg/FtGdhqD" target="blank"><img src="src/img/discord100.png" alt="Discord"></a>
+        <a href="mailto:uminomaguro@gmail.com" target="blank"><img src="src/img/email100.png" alt="Email"></a>
+        <a href="https://github.com/FluffyMaguro" target="blank"><img src="src/img/github100.png" alt="Github"></a>
+    </div>
+</body>
+
+</html>
