@@ -21,7 +21,6 @@ function show_hide_notes() {
         $("#notes").css("display", "block");
     else
         $("#notes").css("display", "none");
-
 };
 
 // Processes parsed hotkey data
