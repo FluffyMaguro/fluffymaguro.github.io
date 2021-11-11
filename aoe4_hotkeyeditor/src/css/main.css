@@ -152,14 +152,15 @@ input[type="text"] {
 
 #errordiv {
     color: rgb(255, 56, 56);
-    margin-bottom: 0;
+    margin: 10px 0 5px 0;
     font-size: 16px;
     display: none;
 }
 
 #notebutton {
-    display: inline-block;
+    display: block;
     cursor: pointer;
+    margin-top: 10px;
     padding: 5px 20px 5px 0;
     border-radius: 3px;
     position: relative;
@@ -187,9 +188,13 @@ input[type="text"] {
 }
 
 #bloglink {
+    display: block;
     position: absolute;
     right: 14px;
-    bottom: 1em;
+    bottom: .74em;
+}
+
+#bloglink span {
     text-decoration: none;
     font-style: italic;
     color: white;
