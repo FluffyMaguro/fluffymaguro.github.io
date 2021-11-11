@@ -167,12 +167,13 @@ input[type="text"] {
 
 #notebutton span {
     position: absolute;
-    left: 17px;
-    top: 11px;
+    left: 21px;
+    top: 15px;
     user-select: none;
     color: var(--light_color);
-    font-size: 34px;
+    font-size: 30px;
     opacity: .9;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #notes {

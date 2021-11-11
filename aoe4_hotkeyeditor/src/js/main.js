@@ -20,11 +20,11 @@ function show_hide_notes() {
     if ($("#notes").css("display") == "none") {
         $("#notes").css("display", "block");
         $("#notebutton span").text("︽ ︽")
-        $("#notebutton span").css("top", "0px")
+        $("#notebutton span").css("top", "13px")
     } else {
         $("#notes").css("display", "none");
         $("#notebutton span").text("︾ ︾");
-        $("#notebutton span").css("top", "11px")
+        $("#notebutton span").css("top", "15px")
     }
 };
 
