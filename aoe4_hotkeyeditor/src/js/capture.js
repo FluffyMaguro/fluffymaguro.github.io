@@ -7,7 +7,7 @@ var global_keys = [];
 
 window.onkeydown = function (e) {
     // console.log(e.keyCode, global_keycode_dict[e.keyCode]);
-    if (!global_logging)
+    if (!global_logging || [91, 92].includes(e.keyCode)) // Exclude Left & Right WinKey
         return
     e.preventDefault();
     global_keys.push(global_keycode_dict[e.keyCode])
@@ -87,7 +87,7 @@ var global_key_translation = {
     "`": "Grave",
     "-": "Minus",
     "=": "Equal",
-    ";": "Semicolon",
+    ";": "Sem   lon",
     "Caps Lock": "CapsLock",
     "\\": "Backslash",
     "Scroll Lock": "ScrollLock",
