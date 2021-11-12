@@ -71,6 +71,7 @@ function find_commands(data, command_type, found_commands) {
 // Sorts found commands and adds them to the page
 function sort_and_add_commands(found_commands) {
     let created_headers = [];
+    let bg_index = 0;
     // First create headers in order specified in global_header_translation
     for (const key in global_header_translation) {
         if (!global_header_translation.hasOwnProperty(key)) continue;
@@ -81,8 +82,9 @@ function sort_and_add_commands(found_commands) {
         created_headers.push(key);
         found_commands[key].sort();
         for (const command of found_commands[key])
-            add_command(command[0], command[1], command[2], key);
+            add_command(command[0], command[1], command[2], key, bg_index++);
     }
+
 
     // Check if there were some keys not present in global_header_translation
     for (const key in found_commands) {
@@ -91,7 +93,7 @@ function sort_and_add_commands(found_commands) {
         error_msg(`${key} not present in global_header_translation`);
         found_commands[key].sort();
         for (const command of found_commands[key])
-            add_command(command[0], command[1], command[2], key);
+            add_command(command[0], command[1], command[2], key, bg_index++);
     }
 }
 
@@ -104,7 +106,7 @@ function format_hotkey(combo, repeats) {
 }
 
 // Adds a command to the window
-function add_command(translated_name, name, hotkeys, command_type) {
+function add_command(translated_name, name, hotkeys, command_type, bg_index) {
     let keys = ["Empty", "Empty"];
     let classes = ["empty", "empty"];
     for (let i = 0; i < hotkeys.length; i++) {
@@ -123,6 +125,9 @@ function add_command(translated_name, name, hotkeys, command_type) {
     }
 
     // Add command
+    let bg_class = "";
+    if (bg_index % 2)
+        bg_class = " bg"
     let working = "";
     let title = "";
     if (global_not_working_commands.includes(name)) {
@@ -130,11 +135,10 @@ function add_command(translated_name, name, hotkeys, command_type) {
         title = "This command doesn't seem to do anything in-game"
     }
 
-    $("#visualization").append(`<div class="command" title="${title}" data-command="${name}">
-                        <div class="name${working}">${translated_name}</div>
-                        <div class="btn first_button ${classes[0]}">${keys[0]}</div>
-                        <div class="btn ${classes[1]}">${keys[1]}</div>
-                        </div>`);
+    $("#visualization").append(`<div class="command${bg_class}" title="${title}" data-command="${name}">` +
+        `<div class="name${working}">${translated_name}</div>` +
+        `<div class="btns"><div class="btn first_button ${classes[0]}">${keys[0]}</div>` +
+        `<div class="btn ${classes[1]}">${keys[1]}</div></div></div>`)
 };
 
 // When clicked button to delete a hotkey

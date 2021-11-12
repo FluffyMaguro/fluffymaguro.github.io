@@ -233,23 +233,30 @@ input[type="text"] {
 
 .command {
     width: 100%;
-    padding: 4px;
+    padding: 2px;
     padding-left: 6px;
     border-radius: 5px;
+    display: flex;
 }
 
 .command .not_working {
     color: gray
 }
 
-.command:nth-child(odd) {
+.command.bg {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
 .command .name {
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.command .btns {
     display: inline-block;
-    width: calc(100% - 334px);
-    height: 100%
+    margin-left: auto;
+    text-align: right;
 }
 
 .command .btn {
@@ -262,6 +269,7 @@ input[type="text"] {
     cursor: pointer;
     background: linear-gradient(#283647, #191E2B);
     user-select: none;
+    margin: 2px
 }
 
 .command .btn:hover {
