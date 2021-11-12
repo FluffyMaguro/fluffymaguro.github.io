@@ -288,6 +288,15 @@ function find_command_rec(obj, command) {
         }
     }
 }
+// Checks if the other button for the command is empty
+function other_btn_empty(btn) {
+    let sibling;
+    if (btn.previousElementSibling != null)
+        sibling = btn.previousElementSibling;
+    else
+        sibling = btn.nextElementSibling;
+    return sibling.classList.contains("empty")
+}
 
 // Updates global hotkey data with current hotkey data
 function update_global_hotkey_data() {
@@ -328,10 +337,15 @@ function update_global_hotkey_data() {
         }
         // Updating with default value
         else {
-            if (obj["keycombos"][button_index] != null)
-                obj["keycombos"][button_index] = $.extend(true, {}, default_command["keycombos"][button_index])
-            else
-                obj["keycombos"].push($.extend(true, {}, default_command["keycombos"][button_index]))
+            let copied = $.extend(true, {}, default_command["keycombos"][button_index]);
+            if (obj["keycombos"].length == 2)
+                obj["keycombos"][button_index] = copied;
+            else if (obj["keycombos"].length == 1 && other_btn_empty(global_current_hotkey['btn']))
+                obj["keycombos"][button_index] = copied;
+            else if (obj["keycombos"].length == 1 && !other_btn_empty(global_current_hotkey['btn']))
+                obj["keycombos"].splice(button_index, 0, copied);
+            else if (obj["keycombos"].length == 0)
+                obj["keycombos"].push(copied)
 
             // Updating the button
             global_current_hotkey['btn'].classList.remove("empty");
