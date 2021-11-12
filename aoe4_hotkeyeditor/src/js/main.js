@@ -174,7 +174,7 @@ function reset_hotkey_clicked() {
 // Sets up hotkey logging and visual change
 function hotkey_button_clicked(args) {
     clear_error_msg();
-    let command = args['target'].parentNode.dataset.command;
+    let command = args['target'].parentNode.parentNode.dataset.command;
     global_current_hotkey = { 'btn': args['target'] };
     global_current_hotkey['command'] = command;
     $(".initial span").text("Press a new key for");
