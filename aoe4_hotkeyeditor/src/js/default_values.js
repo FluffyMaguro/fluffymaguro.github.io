@@ -1,7 +1,7 @@
 // Written by Maguro
 // www.maguro.one
 
-var default_values = {
+var global_default_values = {
     "profile": {
         "bindingGroups": {
             "camera": [

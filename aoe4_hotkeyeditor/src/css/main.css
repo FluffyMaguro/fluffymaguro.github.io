@@ -51,25 +51,30 @@ body {
     color: white
 }
 
-#popupdiv .buttons {
-    margin-top: 10px;
-}
-
-#popupdiv .confirmation .buttons .cbtn, #delbutton {
+#popupdiv .cbtn {
     cursor: pointer;
-    display: inline;
+    display: inline-block;
     background: rgb(22, 22, 22);
     border: 1px solid var(--light_color);
     border-radius: 3px;
     padding: 15px 20px 15px 20px;
-    margin: 50px;
+    margin: 0 50px 0 50px;
     user-select: none;
+    width: 32px;
+    height: 32px;
+    position: relative;
 }
 
-#popupdiv #delbutton {
-    padding: 5px 20px 5px 20px;
-    max-width: 250px;
-    margin: auto;
+.cbtn div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#resetbutton div {
+    font-size: 1.2em;
+    margin-top: -5px
 }
 
 .confirmation #confirm_notes {
@@ -84,6 +89,10 @@ body {
 
 #popupdiv .confirmation .buttons .cbtn.no:hover, #delbutton:hover {
     background: rgb(151, 0, 0);
+}
+
+#popupdiv #resetbutton:hover {
+    background: rgb(14, 53, 160);
 }
 
 /* HEADER */
