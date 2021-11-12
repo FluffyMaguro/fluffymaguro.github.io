@@ -290,12 +290,10 @@ function find_command_rec(obj, command) {
 }
 // Checks if the other button for the command is empty
 function other_btn_empty(btn) {
-    let sibling;
     if (btn.previousElementSibling != null)
-        sibling = btn.previousElementSibling;
+        return btn.previousElementSibling.classList.contains("empty")
     else
-        sibling = btn.nextElementSibling;
-    return sibling.classList.contains("empty")
+        return btn.nextElementSibling.classList.contains("empty")
 }
 
 // Updates global hotkey data with current hotkey data
