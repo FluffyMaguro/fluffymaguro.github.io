@@ -22,7 +22,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     position: fixed;
     display: none;
     z-index: 1
@@ -47,6 +47,7 @@ body {
 
 #popupdiv .initial {
     margin-top: -30px;
+    width: 100%
 }
 
 #popupdiv p {
@@ -63,8 +64,8 @@ body {
     padding: 15px 20px 15px 20px;
     margin: 0 50px 0 50px;
     user-select: none;
-    width: 32px;
-    height: 32px;
+    width: 90px;
+    height: 26px;
     position: relative;
 }
 
@@ -73,17 +74,16 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-#resetbutton div {
-    font-size: 1.2em;
-    margin-top: -5px
+    font-size: 0.6em;
+    text-transform: uppercase;
 }
 
 .confirmation #confirm_notes {
     margin-top: 50px;
     font-size: 0.6em;
     color: red;
+    list-style-type: none;
+    font-weight: bold;
 }
 
 #popupdiv .confirmation .buttons .cbtn.yes:hover {
@@ -171,33 +171,9 @@ input[type="text"] {
     display: none;
 }
 
-#notebutton {
-    display: inline-block;
-    cursor: pointer;
-    margin-top: 10px;
-    padding: 5px 20px 5px 0;
-    border-radius: 3px;
-    position: relative;
-}
-
-#notebutton span {
-    position: absolute;
-    left: 10px;
-    top: 18px;
-    user-select: none;
-    color: var(--light_color);
-    font-size: 26px;
-    opacity: .9;
-    font-family: 'Times New Roman', Times, serif;
-}
-
 #notes {
-    margin-top: 26px;
+    margin-top: 12px;
     margin-bottom: 20px;
-    display: none
-}
-
-#notes ul {
     list-style-type: circle
 }
 

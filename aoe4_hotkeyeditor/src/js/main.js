@@ -13,15 +13,6 @@ function init_function() {
     $("#delbutton").click(del_button_clicked);
     $("#resetbutton").click(reset_hotkey_clicked);
     $("#savebtn").click(parse_and_save_data);
-    $("#notebutton").click(show_hide_notes);
-};
-
-// Shows or hides notes when a button is clicked
-function show_hide_notes() {
-    if ($("#notes").css("display") == "none")
-        $("#notes").css("display", "block");
-    else
-        $("#notes").css("display", "none");
 };
 
 // Processes parsed hotkey data
@@ -245,11 +236,11 @@ function key_logging_finished() {
     // Add notes
     let notes = "";
     if (global_not_working_commands.includes(global_current_hotkey['command']))
-        notes += "– This command doesn't seem to do anything in-game<br>"
+        notes += "<li>This command doesn't seem to do anything in-game</li>"
     if (normal.length == 0 && modifiers.length > 0)
-        notes += "– Modifiers without normal keys might work only in special cases like camera control<br>"
+        notes += "<li>Modifiers without normal keys might work only in special cases like camera control</li>"
     if (mouse_buttons.length > 0)
-        notes += "– Mouse buttons might work only in some cases like camera control"
+        notes += "<li>Mouse buttons might work only in some cases like camera control</li>"
 
     global_current_hotkey['text'] = key;
     $(".confirmation p").text(key);
