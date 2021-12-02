@@ -16,6 +16,10 @@ body {
 
 /* POPUP */
 
+.highlight {
+    color: var(--light_color);
+}
+
 #popupdiv {
     position: absolute;
     top: 0;
